@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    
+</head>
+<body>
+<div class="container">
+    <h1>{{ post.title }}</h1>
+    <p class="date">Publicat pe: {{ post.created_at }}</p>
+    <div class="content">
+        {{ post.content|linebreaks }}
+    </div>
+    <br>
+    
+</div>
+</body>
+</html>

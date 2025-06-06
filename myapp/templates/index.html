@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Grijincu Alexandra-Stefania - Blog </title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <script src="https://kit.fontawesome.com/fd1cccb57b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section>
+        <nav>
+            <label class="logo">tech-guru's web platform</label>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li><a class="active" href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'project' %}">Upload your project</a></li>
+            </ul>
+
+        </nav>
+        <script src="{% static 'js/menu.js' %}"></script>
+
+        <header>
+            <div class="hero-image">
+                <div class="hero-text">
+                    <h1 style="font-size:50px">manage your tech projects</h1>
+                </div>
+            </div>
+        </header>
+        <br>
+        <br>
+        <br>
+        <h2>Proiecte recente</h2>
+        <br>
+        <div class="posts">
+            {% for post in posts %}
+            <div class="post">
+                <h3>{{ post.title }}</h3>
+                <p><strong>Data:</strong> {{ post.post_date }}</p>
+                {% if post.image %}
+                <a href="{{ post.image.url }}" download>Descarcă fișierul</a>
+                {% endif %}
+                <p><strong></strong> {{ post.paragraph|truncatewords:25 }}</p>
+                <p><strong>Detalii:</strong> {{ post.more_details_for_the_dedicated_page|truncatewords:25 }}</p>
+
+            </div>
+            {% empty %}
+            <p>Nu există postări momentan.</p>
+            {% endfor %}
+            <br>
+            <br>
+            <br>
+            <h2>Reviews</h2>
+            <ul>
+                {% for review in reviews %}
+                <li>
+                    <p><strong>{{ review.email }}</strong> ({{ review.date }})</p>
+                    <p>Rating: {{ review.rating }}</p>
+                    <p>{{ review.comment }}</p>
+                    <a href="{% url 'update_review' review.id %}">Update</a> <br>
+                    <a href="{% url 'delete_review' review.id %}">Delete</a> <br>
+                </li>
+                {% endfor %}
+            </ul>
+            <br>
+            <a href="{% url 'submit_review' %}">Leave a Review</a>
+
+        </div>
+
+    </section>
+</body>
+
+</html>

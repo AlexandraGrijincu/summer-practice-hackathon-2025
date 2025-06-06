@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Editează postarea</title>
+</head>
+<body>
+    <h1>Editează postarea</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Titlu:</label>
+        <input type="text" id="title" name="title" value="{{ post.title }}"><br><br>
+
+        <label for="description">Descriere:</label><br>
+        <textarea id="description" name="description" rows="5" cols="40">{{ post.description }}</textarea><br><br>
+
+        <button type="submit">Salvează</button>
+    </form>
+
+    <p><a href="{% url 'index' %}">Înapoi la homepage</a></p>
+</body>
+</html>
