@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> Grijincu Alexandra-Stefania - Blog </title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+
+    <script src="https://kit.fontawesome.com/fd1cccb57b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section>
+        <nav>
+            <label class="logo">tech-guru's web platform</label>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a class="active" href="{% url 'project' %}">Upload your project</a></li>
+            </ul>
+            <script src="{% static 'js/menu.js' %}"></script>
+        </nav>
+
+    </section>
+
+</body>
+
+</html>
